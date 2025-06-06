@@ -1,5 +1,6 @@
 // Install bcrypt: npm install bcrypt
 import bcrypt from 'bcrypt';
+import {User} from '../models/index.js';
 
 // In registerUser
 export const registerUser = async (req, res) => {
@@ -45,4 +46,45 @@ export const loginUser = async (req, res) => {
     console.error('Error in loginUser:', error);
     return res.status(500).json({ success: false, message: 'Internal Server error', data: error.message });
   }
+};
+
+export const getUsers = async (req, res) => {
+    try {
+        const users = await User.find({}, 'username _id');
+        return res.status(200).json({
+            success: true,
+            message: 'Users fetched successfully',
+            data: users,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: 'Error fetching users',
+            data: error.message,
+        });
+    }
+};
+
+export const getUserGroups = async (req, res) => {
+    try {
+        const userId = req.query.userId; // In a real app, get this from auth middleware
+        const user = await User.findById(userId).populate('groups', 'name _id');
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: 'User not found',
+            });
+        }
+        return res.status(200).json({
+            success: true,
+            message: 'Groups fetched successfully',
+            data: user.groups,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: 'Error fetching groups',
+            data: error.message,
+        });
+    }
 };
