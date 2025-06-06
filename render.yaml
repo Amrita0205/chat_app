@@ -10,6 +10,6 @@ services:
       - key: PORT
         value: 1234
       - key: MONGO_URI
-        value: mongodb+srv://Amrita:<db_password>@cluster0.ditr5tx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+        value: mongodb+srv://Amrita:ashu@123@cluster0.ditr5tx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
       - key: NGROK_AUTHTOKEN
         value: 2uioBUaMPQoUNFumRc3958QpUb4_5ytYC1ku4MZwu8BDpRTSP
