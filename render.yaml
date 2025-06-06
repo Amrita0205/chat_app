@@ -10,6 +10,6 @@ services:
       - key: PORT
         value: 1234
       - key: MONGO_URI
-        value: mongodb+srv://amrita0205kadam:7twCP4J9NgEOy3kR@cluster0.bn6mvfk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+        value: mongodb+srv://amrita0205kadam:mydatabase0205@cluster0.bn6mvfk.mongodb.net/chat_app?retryWrites=true&w=majority&appName=Cluster0
       - key: NGROK_AUTHTOKEN
         value: 2uioBUaMPQoUNFumRc3958QpUb4_5ytYC1ku4MZwu8BDpRTSP
